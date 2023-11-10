@@ -1,0 +1,25 @@
+<h1>Table vote </h1>
+<table border="4">
+    <tr>
+    <td>Id</td>
+        <td>Date</td>
+        <td>Note vote</td>
+        <td>Joueur</td>
+        <td>Action 1</td>
+        <td>Action 2</td>
+    </tr>
+{% for i in vote %}
+    <tr>
+     <td>{{i.id}}</td>
+        <td>{{i.date|date('Y/m/d')}}</td>
+        <td>{{i.notevote}}</td>
+         <td>{{i.joueur}}</td>
+        
+        <td><a href="{{ path('editVote',{'id' : i.id}) }}">Edit</a></td>
+        <td><a href="{{ path('deleteVote',{'id' : i.id}) }}">delete</a></td>
+    </tr>
+    {% endfor%}
+</table>
+
+<hr>
+<button><a href="{{ path('addVote') }}">Ajouter vote</a></button>

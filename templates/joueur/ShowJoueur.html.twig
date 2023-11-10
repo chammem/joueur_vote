@@ -1,0 +1,26 @@
+<h1>Table joueur </h1>
+<table border="4">
+    <tr>
+    <td>Id</td>
+        <td>Nom</td>
+        <td>Equipe</td>
+        <td>Moyenne vote</td>
+        <td>Action 1</td>
+        <td>Action 2</td>
+        <td>Action 3</td>
+    </tr>
+{% for i in joueur %}
+    <tr>
+     <td>{{i.id}}</td>
+        <td>{{i.nom|upper }}</td>
+        <td>{{i.equipe}}</td>
+        <td>{{i.moyennevote}}</td>
+        <td><a href="{{ path('editJoueur',{'id' : i.id}) }}">Edit</a></td>
+        <td><a href="{{ path('deleteJoueur',{'id' : i.id}) }}">delete</a></td>
+        <td><a href="{{ path('detailVote',{'id' : i.id}) }}">détails vote</a></td>
+    </tr>
+    {% endfor%}
+</table>
+
+<hr>
+<button><a href="{{ path('addJoueur') }}">Ajouter joueur</a></button>

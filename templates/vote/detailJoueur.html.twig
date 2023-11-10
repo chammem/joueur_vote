@@ -1,0 +1,24 @@
+{% if votes is empty %}
+    <h5>Pas de vote</h5>
+{% else %}
+    <table border="4">
+        <tr>
+            <td>Date</td>
+            <td>Note vote</td>
+        </tr>
+        {% set currentJoueur = null %}
+        {% for i in votes %}
+            {% if i.joueur.id != currentJoueur %}
+                <h1>Vote du joueur {{ i.joueur.nom }}</h1>
+                <p>Moyenne du vote : {{ i.joueur.moyenneVote }}</p>
+            {% endif %}
+            <tr>
+                <td>{{i.date|date('Y/m/d')}}</td>
+                <td>{{i.notevote}}</td>
+            </tr>
+            {% set currentJoueur = i.joueur.id %}
+        {% endfor %}
+    </table>
+{% endif %}
+
+
